@@ -1,0 +1,40 @@
+apiversion: v1
+king: Pod
+metadata: 
+  name: string
+  namespace: string
+spec:
+  replicas: *int32
+  selector: 
+    matchLabels: map[string]string
+    matchExpressions: 
+    - key: string
+      operator: string(In/NotIn/Exists/DoesNotExist)
+      values: []string
+  template:
+    metadata: metav1.ObjectMeta
+    spec: PodSpec
+  strategy:
+    type: string(Recreate/RollingUpdate)
+    rollingUpdate:
+      maxUnavailable: intstr
+      maxSurge: intstr
+  minReadySeconds: int32
+  revisionHistoryLimit: *int32
+  paused: bool
+  progressDeadlineSeconds: *int32
+status:
+  observedGeneration: int64
+  replicas: int32
+  updatedReplicas: int32
+  readyReplicas: int32
+  availableReplicas: int32
+  unavailableReplicas: int32
+  conditions: 
+    type: string(Available/Progressing/ReplicaFailure)
+    status: string(True/False/Unknown)
+    lastUpdateTime: time
+    lastTransitionTime: time
+    reason: string
+    message: string
+  collisionCount: *int32

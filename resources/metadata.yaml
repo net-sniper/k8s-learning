@@ -1,0 +1,27 @@
+metadata: 
+  name: string
+  generateName: string
+  namespace: string
+  selfLink: string
+  apiVersion: string
+  uid: string
+  resourceVersion: string
+  generation: int64
+  creationTimestamp: Time
+  deletionTimestamp: Time
+  deletionGracePeriodSeconds: int64
+  labels: map[string]string
+  annotations: map[string]string
+  ownerReferences: 
+    - apiVersion: string
+      kind: string
+      name: string
+      uid: string
+      controller: bool
+      blockOwnerDeletion: bool
+  initializers:
+    pending:
+      - name: string
+    result:
+  finalizers: []string
+  clusterName: string
