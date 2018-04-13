@@ -1,0 +1,55 @@
+apiversion: v1
+king: PersistentVolume
+metadata: 
+  name: string
+  namespace: string
+spec:
+  capacity: map[ResourceName]resource.Quantity #ResourceName(string-cpu/memory/storage/ephemeral-storage)
+  PersistentVolumeSource:
+  accessModes: []PersistentVolumeAccessMode #(string-ReadWriteOnce/ReadOnlyMany/ReadWriteMany)
+  claimRef: 
+    kind: string 
+    namespace: string
+    name: string
+    uid: types.UID
+    apiVersion: string 
+    resourceVersion: string
+    fieldPath: string
+  persistentVolumeReclaimPolicy: string #(Recycle/Delete/Retain)
+  storageClassName: string
+  mountOptions: []string
+  volumeMode: PersistentVolumeMode #(string-Block/Filesystem)
+  nodeAffinity: 
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: string
+          operator: LabelSelectorOperator #(string-In/NotIn/Exists/DoesNotExist/Gt/Lt)
+          values: []string
+status:
+  phase: PersistentVolumePhase #(string-Pending/Available/Bound/Released/Failed)
+  message: string
+  reason: string
+---
+apiversion: v1
+king: PersistentVolumeClaim
+metadata: 
+  name: string
+  namespace: string
+spec:
+  accessModes: []PersistentVolumeAccessMode #(string-ReadWriteOnce/ReadOnlyMany/ReadWriteMany)
+  selector:
+    matchLabels: map[string]string
+    matchExpressions:
+    - key: string
+      operator: LabelSelectorOperator #(string-In/NotIn/Exists/DoesNotExist/Gt/Lt)
+      values: []string
+  resources:
+    limits: map[ResourceName]resource.Quantity
+    requests: map[ResourceName]resource.Quantity
+  volumeName: string
+  storageClassName: *string
+  volumeMode: PersistentVolumeMode #(string-Block/Filesystem)
+
+
+
