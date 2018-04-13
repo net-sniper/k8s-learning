@@ -1,0 +1,19 @@
+apiversion: autoscaling/v1
+king: HorizontalPodAutoscaler
+metadata: 
+  name: string
+  namespace: string
+spec:
+  scaleTargetRef:
+    kind: string
+    name: string
+    apiVersion: string
+  minReplicas: int32
+  maxReplicas: int32 
+  targetCPUUtilizationPercentage: int32
+status:
+  observedGeneration: int64
+  lastScaleTime: Time
+  currentReplicas: int32
+  desiredReplicas: int32
+  currentCPUUtilizationPercentage: int32

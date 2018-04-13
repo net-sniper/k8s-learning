@@ -1,0 +1,212 @@
+apiversion: v1
+king: Pod
+metadata: 
+  name: string
+  namespace: string
+spec:
+  volumes:
+  - name: string
+    hostPath:
+      path: string
+      type: string(DirectoryOrCreate/Directory/FileOrCreate/File/Socket/CharDevice/BlockDevice)
+    emptyDir:
+      medium: string(Memory/HugePages)
+      sizeLimit: xx
+    configMap:
+      name: string
+      items:
+      - key: string
+        path: string
+        mode: *int32
+      defaultMode: *int32
+      optional: *bool
+    secret:
+      secretName: string
+      items:
+      - key: string
+        path: string
+        mode: *int32
+      defaultMode: *int32
+      optional: *bool
+  initContainers:
+  - name: string
+    image: string
+    command: []string
+    args: []string
+    workingDir: string
+    ports:
+    - name: string
+      hostPort: int32
+      containerPort: int32
+      protocol: string
+      hostIP: string
+    envFrom:
+    - prefix: string
+      configMapRef:
+        name: string
+      secretRef:
+        name: string
+        optional: *bool
+    env:
+      name: string
+      value: string
+      valueFrom:
+        fieldRef:
+          apiVersion: string
+          fieldPath: string
+        resourceFieldRef:
+          containerName: string
+          resource: string
+          divisor: xxx
+        configMapKeyRef:
+          name: string
+          key: string
+          optional: *bool
+        secretKeyRef:
+          name: string
+          key: string
+          optional: *bool
+    resources:
+      limits: map[ResourceName]resource.Quantity
+      requests: map[ResourceName]resource.Quantity
+    volumeMounts:
+     - name: string
+       path: string
+    volumeDevices:
+    - name: string
+      devicePath: string
+    livenessProbe:
+      exec: # Handler begin
+        command: []string
+      httpGet:
+        path: string
+        port: intstr
+        host: string
+        scheme: string
+        httpHeaders: 
+        - name: string
+          value: string
+      tcpSocket:
+        port: intstr
+        host: string # Handler end
+      initialDelaySeconds: int32
+      timeoutSeconds: int32
+      periodSeconds: int32
+      successThreshold: int32
+      failureThreshold: int32
+    readinessProbe: 同上
+    lifecycle: 
+      postStart: Handler
+      preStop: Handler
+    terminationMessagePath: string
+    terminationMessagePolicy: string(File/FallbackToLogsOnError)
+    imagePullPolicy: string(Always/Never/IfNotPresent)
+    securityContext:
+      capabilities:
+        add: []string
+        drop: []string
+      privileged: bool
+      seLinuxOptions:
+        user: string
+        role: string
+        type: string
+        level: string
+      runAsUser: *int64
+      runAsGroup: *int64
+      runAsNonRoot: *bool
+      readOnlyRootFilesystem: *bool
+      allowPrivilegeEscalation: *bool
+    stdin: bool
+    stdinOnce: bool
+    tty: bool
+  containers: 同上
+  restartPolicy: string
+  terminationGracePeriodSeconds: *int64
+  activeDeadlineSeconds: *int64
+  dnsPolicy: string
+  nodeSelector: map[string]string
+  serviceAccountName: string
+  serviceAccount: string
+  automountServiceAccountToken: *bool
+  nodeName: string
+  hostNetwork: bool
+  hostPID: bool
+  hostIPC: bool
+  shareProcessNamespace: *bool
+  securityContext: 
+    seLinuxOptions:
+      user: string
+      role: string
+      type: string
+      level: string
+    runAsUser: *int64
+    runAsGroup: *int64
+    runAsNonRoot: *bool
+    supplementalGroups: []int64
+    fsGroup: *int64
+  imagePullSecrets:
+  - name: string
+  hostname: string
+  subdomain: string
+  affinity: string
+  schedulerName: string
+  tolerations:
+  - key: string
+    operator: string
+    value: string
+    effect: string(NoSchedule/PreferNoSchedule/NoExecute)
+    tolerationSeconds: *int64
+  hostAliases:
+  - ip: string
+    hostnames: []string
+  priorityClassName: string
+  priority: *int32
+  dnsConfig: 
+    nameservers: []string
+    searches: []string
+    options:
+    - name: string
+      value: *string
+status:
+  phase: string(Pending/Running/Succeeded/Failed/Unknown)
+  conditions: 
+  - type: string(PodScheduled/Ready/Initialized/Unschedulable)
+    status: string(True/False/Unknown)
+    lastProbeTime: time
+    lastTransitionTime: time
+    reason: string
+    message: string
+  message: string
+  reason: string
+  nominatedNodeName: string
+  hostIP: string
+  podIP: string
+  startTime: time
+  initContainerStatuses: 
+  - name: string
+    state: 
+      waiting:
+        reason: string
+        message: string
+      running:
+        startedAt: time
+      terminated:
+        exitCode: int32
+        signal: int32
+        reason: string
+        message: string
+        startedAt: time
+        finishedAt: time
+        containerID: string
+    lastState: 同上
+    ready: bool
+    restartCount: int32
+    image: string
+    imageID: string
+    containerID: string
+  containerStatuses: 同上
+  qosClass: string(Guaranteed/Burstable/BestEffort)
+  
+
+
+

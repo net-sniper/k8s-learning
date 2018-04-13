@@ -1,0 +1,35 @@
+apiversion: v1
+king: Service
+metadata: 
+  name: string
+  namespace: string
+spec:
+  ports:
+  - name: string
+    protocol: string
+    port: int32
+    targetPort: 
+      type: int
+      intVal: int32
+      strVal: string
+    nodePort: int32
+  selector: map[string]string
+  clusterIP: string
+  type: ServiceType(string-ClusterIP/NodePort/LoadBalancer/ExternalName)
+  externalIPs: []string
+  sessionAffinity: ServiceAffinity(string)
+  loadBalancerIP: string
+  loadBalancerSourceRanges: []string
+  externalName: string
+  externalTrafficPolicy: ServiceExternalTrafficPolicyType(string-Local/Cluster)
+  healthCheckNodePort: int32
+  publishNotReadyAddresses: bool
+  sessionAffinityConfig: 
+    clientIP:
+      timeoutSeconds: int32
+status:
+  loadBalancer: 
+    ingress: 
+      ip: string
+      hostname: string
+      
