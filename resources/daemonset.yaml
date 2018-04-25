@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata: 
+  name: string
+  namespace: string
+spec:
+  selector: 
+    matchLabels: map[string]string
+    matchExpressions: 
+    - key: string
+      operator: string(In/NotIn/Exists/DoesNotExist)
+      values: []string
+  template:
+    metadata: metav1.ObjectMeta
+    spec: PodSpec
+  updateStrategy:
+    type: DaemonSetUpdateStrategyType #(string-RollingUpdate/OnDelete)
+    rollingUpdate:
+      maxUnavailable: intstr.IntOrString
+  minReadySeconds: int32 #default 0
+  revisionHistoryLimit: *int32
+status:
+  currentNumberScheduled: int32
+  numberMisscheduled: int32
+  desiredNumberScheduled: int32
+  numberReady: int32
+  observedGeneration: int64
+  updatedNumberScheduled: int32
+  numberAvailable: int32
+  numberUnavailable: int32
+  collisionCount: int32
+  conditions:
+  - type: DaemonSetConditionType #(string-)
+    status: v1.ConditionStatus #string(True/False/Unknown)
+    lastTransitionTime: time
+    reason: string
+    message: string

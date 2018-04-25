@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+spec:
+  replicas: *int32 #default is 1
+  selector: 
+    matchLabels: map[string]string
+    matchExpressions: 
+    - key: string
+      operator: string(In/NotIn/Exists/DoesNotExist)
+      values: []string
+  template:
+    metadata: metav1.ObjectMeta
+    spec: PodSpec
+  volumeClaimTemplates:
+  - kind: string
+    apiVersion: string
+    metadata: metav1.ObjectMeta
+    spec: 
+      accessModes: []PersistentVolumeAccessMode #(string-ReadWriteOnce/ReadOnlyMany/ReadWriteMany)
+      selector:
+        matchLabels: map[string]string
+        matchExpressions: 
+        - key: string
+          operator: string(In/NotIn/Exists/DoesNotExist)
+          values: []string
+      resources: 
+        limits: map[ResourceName]resource.Quantity
+        requests: map[ResourceName]resource.Quantity
+      volumeName: string
+      storageClassName: *string
+      volumeMode: PersistentVolumeMode #(string-Block/Filesystem)
+    status: 
+      phase: PersistentVolumeClaimPhase #(string-Pending/Available/Bound/Released/Failed)
+      accessModes: []PersistentVolumeAccessMode #(string-ReadWriteOnce/ReadOnlyMany/ReadWriteMany)
+      capacity: map[ResourceName]resource.Quantity
+      conditions:
+      - type: PersistentVolumeClaimConditionType #(string-Resizing/FileSystemResizePending)
+        status: ConditionStatus #(string-True/False/Unknown)
+        lastProbeTime: time
+        lastTransitionTime: time
+        reason: string
+        message: string
+  serviceName: string
+  podManagementPolicy: PodManagementPolicyType #(string-OrderedReady/Parallel)
+  updateStrategy:
+    type: StatefulSetUpdateStrategyType #(string-RollingUpdate/OnDelete)
+    rollingUpdate: 
+      partition: *int32
+  revisionHistoryLimit: *int32
+status:

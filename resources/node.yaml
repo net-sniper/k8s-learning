@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Node
+metadata: 
+  name: string
+  namespace: string
+spec:
+  podCIDR: string
+  providerID: string # for cloud provider
+  unschedulable: bool
+  taints:
+  - key: string
+    value: string
+    effect: TaintEffect #(string-NoSchedule/PreferNoSchedule/NoExecute)
+    timeAdded: time
+  configSource:
+    metav1.TypeMeta: xxx #apiVersion: string kind: string
+    configMapRef:
+      kind: string
+      namespace: string
+      name: string
+      uid: types.UID
+      apiVersion: string
+      resourceVersion: string
+      fieldPath: string
+  externalID: string #Deprecated

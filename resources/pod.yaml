@@ -1,5 +1,5 @@
-apiversion: v1
-king: Pod
+apiVersion: v1
+kind: Pod
 metadata: 
   name: string
   namespace: string
@@ -120,13 +120,13 @@ spec:
     stdinOnce: bool
     tty: bool
   containers: 同上
-  restartPolicy: string
+  restartPolicy: RestartPolicy #(string-Always(default)/OnFailure/Never)
   terminationGracePeriodSeconds: *int64
   activeDeadlineSeconds: *int64
-  dnsPolicy: string
+  dnsPolicy: DNSPolicy #(string-ClusterFirstWithHostNet/ClusterFirst(default)/Default/None)
   nodeSelector: map[string]string
   serviceAccountName: string
-  serviceAccount: string
+  serviceAccount: string #Deprecated
   automountServiceAccountToken: *bool
   nodeName: string
   hostNetwork: bool
@@ -147,14 +147,15 @@ spec:
   imagePullSecrets:
   - name: string
   hostname: string
-  subdomain: string
-  affinity: string
+  subdomain: string #"<hostname>.<subdomain>.<pod namespace>.svc.<cluster domain>"
+  affinity:
+    nodeAffinity: 
   schedulerName: string
   tolerations:
   - key: string
-    operator: string
+    operator: TolerationOperator #(string-Exists/Equal)
     value: string
-    effect: string(NoSchedule/PreferNoSchedule/NoExecute)
+    effect: TaintEffect #string(NoSchedule/PreferNoSchedule/NoExecute)
     tolerationSeconds: *int64
   hostAliases:
   - ip: string

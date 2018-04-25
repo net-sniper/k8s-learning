@@ -1,5 +1,5 @@
-apiversion: v1
-king: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata: 
   name: string
   namespace: string
@@ -19,7 +19,7 @@ spec:
     rollingUpdate:
       maxUnavailable: intstr
       maxSurge: intstr
-  minReadySeconds: int32
+  minReadySeconds: int32 #default 0
   revisionHistoryLimit: *int32
   paused: bool
   progressDeadlineSeconds: *int32

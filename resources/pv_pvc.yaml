@@ -1,5 +1,5 @@
-apiversion: v1
-king: PersistentVolume
+apiVersion: v1
+kind: PersistentVolume
 metadata: 
   name: string
   namespace: string

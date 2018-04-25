@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: string
+spec:
+  replicas: *int32
+  minReadySeconds: int32
+  selector: map[string]string
+  template:
+    metadata: metav1.ObjectMeta
+    spec: PodSpec
+status:
+  replicas: int32
+  fullyLabeledReplicas: int32
+  readyReplicas: int32
+  availableReplicas: int32
+  observedGeneration: int64
+  conditions:
+  - type: ReplicationControllerConditionType #(string-ReplicaFailure)
+    status: ConditionStatus #(string-True/False/Unknown)
+    lastTransitionTime: time
+    reason: string
+    message: string
