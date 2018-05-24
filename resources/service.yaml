@@ -17,7 +17,7 @@ spec:
   clusterIP: string
   type: ServiceType(string-ClusterIP/NodePort/LoadBalancer/ExternalName)
   externalIPs: []string
-  sessionAffinity: ServiceAffinity(string)
+  sessionAffinity: ServiceAffinity(string-None(default)/ClientIP)
   loadBalancerIP: string
   loadBalancerSourceRanges: []string
   externalName: string
