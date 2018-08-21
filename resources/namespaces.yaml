@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata: 
+  name: string
+  namespace: string
+spec:
+  finalizers: []FinalizerName(string-kubernetes)
+status:
+  phase: NamespacePhase(string-Active/Terminating)

@@ -32,4 +32,24 @@ status:
     ingress: 
       ip: string
       hostname: string
-      
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: string
+  namespace: string
+subsets:
+- addresses:
+  - ip: string
+    hostname: string
+    nodename: string
+    targetRef: *ObjectReference
+  notReadyAddresses:
+  - ip: string
+    hostname: string
+    nodename: string
+    targetRef: *ObjectReference
+  ports:
+  - name: string
+    port: int32
+    protocol: Protocol

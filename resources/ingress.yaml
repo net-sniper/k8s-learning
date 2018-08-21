@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata: 
+  name: string
+  namespace: string
+spec:
+  backend:
+    serviceName: string
+    servicePort: stringorint
+  tls:
+  - Hosts: []string
+    SecretName: string
+  rules:
+  - host: string
+    http: 
+      paths:
+      - path: string
+        backend: IngressBackend
+status:
+  loadBalancer:
+    ingress:
+    - ip: string
+      host: string
